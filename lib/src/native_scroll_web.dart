@@ -111,14 +111,23 @@ class _NativeScrollBuilderState extends State<NativeScrollBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        HtmlElementView(viewType: _viewId),
-        ScrollConfiguration(
-          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
-          child: widget.builder(context, _scrollController),
+    return NotificationListener<SizeChangedLayoutNotification>(
+      onNotification: (notification) {
+        _setScrollHeight();
+        return true;
+      },
+      child: SizeChangedLayoutNotifier(
+        child: Stack(
+          children: [
+            HtmlElementView(viewType: _viewId),
+            ScrollConfiguration(
+              behavior:
+                  ScrollConfiguration.of(context).copyWith(scrollbars: false),
+              child: widget.builder(context, _scrollController),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
