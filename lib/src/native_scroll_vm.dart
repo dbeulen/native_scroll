@@ -9,7 +9,7 @@ class NativeScrollBuilder extends StatefulWidget {
     this.controller,
     required this.builder,
   }) : super(key: key);
-  ScrollController? controller;
+  final ScrollController? controller;
 
   @override
   _NativeScrollBuilderState createState() => _NativeScrollBuilderState();
