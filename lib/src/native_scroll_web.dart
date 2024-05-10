@@ -118,6 +118,7 @@ class _NativeScrollBuilderState extends State<NativeScrollBuilder> {
       },
       child: SizeChangedLayoutNotifier(
         child: Stack(
+          alignment: Alignment.center,
           children: [
             HtmlElementView(viewType: _viewId),
             ScrollConfiguration(
